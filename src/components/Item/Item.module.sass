@@ -1,0 +1,75 @@
+@font-face 
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserat/Montserrat-Regular.ttf') format('truetype')
+
+$montserrat_Header: 'Montserrat'  
+    
+.container
+    display: flex
+    flex-direction: column
+
+    justify-content: center
+    align-items: center
+
+    width: 520px
+    height: 450px
+    margin-top: 40px
+
+    gap: 30px
+
+    .top
+        width: 100%
+
+    .bottom
+        width: 100%
+        display: flex
+        flex-direction: column
+
+        justify-content: space-between
+        align-items: center
+
+        height: 120px
+
+        .nameSide
+            width: 98%
+            display: flex
+            flex-direction: row
+
+            justify-content: space-between
+            align-items: flex-start
+            .heart
+                cursor: pointer
+            p
+                width: 383px
+                font-family: $montserrat_Header
+                font-size: 16px
+                text-transform: lowercase
+
+
+        .buttonSide
+            width: 98%
+            display: flex
+            flex-direction: row
+
+            justify-content: space-between
+            align-items: center
+
+            .card
+                cursor: pointer
+            button
+                border: 1px solid #7A5D36
+                width: 243px
+                height: 50px
+
+                cursor: pointer
+
+                color: black
+                background-color: white
+
+                font-family: $montserrat_Header
+                transition: .3s
+
+                &:hover
+                    transition: .3s
+                    background-color: #7A5D36
+                    color: white
