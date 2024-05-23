@@ -1,0 +1,276 @@
+@font-face 
+    font-family: 'Forum'
+    src: url('../../fonts/Montserat/Forum-Regular.ttf') format('truetype')
+
+$forum: 'Forum'
+@font-face 
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserat/Montserrat-Regular.ttf') format('truetype')
+
+$montserrat_Header: 'Montserrat'
+    
+.container
+    display: flex
+    flex-direction: column
+
+    justify-content: center
+    align-items: center
+
+    width: 100vw
+
+    .innerContainer
+        display: flex
+        flex-direction: column
+
+        justify-content: space-between
+        align-items: flex-start
+
+        width: 1620px
+
+        .path
+            display: flex
+            flex-direction: row
+
+            justify-content: flex-start
+            
+            width: 404px
+            margin-top: 100px
+            gap: 15px
+            align-items: center
+
+            p
+                font-family: $montserrat_Header
+                font-size: 22px
+
+        .title
+            font-size: 45px
+            font-family: $forum
+            margin-top: 80px
+
+
+        .slideSide
+            margin-top: 70px
+            display: flex
+            flex-direction: row
+
+            justify-content: flex-start
+            align-items: flex-start
+
+            width: 100%
+
+            gap: 60px
+
+            .right
+
+                display: flex
+                flex-direction: column
+
+                justify-content: center
+                align-items: flex-start
+
+                height: 100%
+
+                .par
+                    font-family: $montserrat_Header
+                    font-size: 14px
+                    line-height: 30px
+
+                .price
+                    font-family: $forum
+                    font-size: 45px
+
+                    margin-top: 40px
+
+                .counter
+                    margin-top: 30px
+                    display: flex
+                    flex-direction: row
+
+                    justify-content: center
+                    align-items: center
+
+                    gap: 20px
+                    button
+                        background: none
+                        border: none
+                        
+                        img
+                            cursor: pointer
+
+                    .number
+                        font-family: $montserrat_Header
+                        font-size: 16px
+
+
+        .options
+            display: flex
+            flex-direction: column
+
+            justify-content: center
+            align-items: flex-start
+
+            margin-top: 50px
+
+
+            .top
+                display: flex
+                flex-direction: row
+
+                justify-content: center
+                align-items: center
+
+                gap: 40px
+
+                padding-bottom: 8px
+
+                h4
+                    font-family: $forum
+                    font-size: 35px    
+                    font-weight: lighter
+                    cursor: pointer
+
+            .navigationSide
+                display: flex
+                flex-direction: column
+
+                justify-content: center
+                align-items: flex-start
+
+                width: 50%
+
+                img
+                    position: absolute
+
+                .navigationArrow
+                    height: 3px
+                    transition: .4s
+
+                .defaultLine
+                    width: 30%
+            .bottom
+                display: flex
+                flex-direction: row
+
+                justify-content: flex-start
+                align-items: center
+                gap: 100px
+
+                .left
+                    display: flex
+                    flex-direction: column
+
+                    justify-content: flex-start
+                    align-items: flex-start
+                    gap: 15px
+
+                    margin-top: 30px
+
+
+                    .bold
+                        font-family: $montserrat_Header
+                        font-size: 16px
+                        font-weight: bolder
+
+                .right
+                    display: flex
+                    flex-direction: column
+
+                    justify-content: flex-start
+                    align-items: flex-start
+                    gap: 15px
+                    margin-top: 30px
+
+
+                    .par
+                        font-family: $montserrat_Header
+                        font-size: 16px
+
+                .deliveryText
+                    font-family: $montserrat_Header
+                    font-size: 16px
+
+                    width: 50%
+                    line-height: 30px
+                    margin-top: 30px
+
+
+                .paymentTest
+                    font-family: $montserrat_Header
+                    font-size: 16px
+
+                    width: 50%
+                    line-height: 30px
+                    margin-top: 30px
+
+
+        .secondSide
+            display: flex
+            flex-direction: column
+
+            justify-content: center
+            align-items: flex-start
+
+            width: 100%
+
+            .title
+                font-family: $forum
+                font-size: 45px
+                font-weight: lighter
+            .secondImageSide
+                display: flex
+                flex-direction: row
+
+                justify-content: space-between
+                align-items: center
+
+                margin-top: 70px
+                gap: 75px
+
+                .par
+                    font-family: $montserrat_Header
+                    font-size: 22px
+
+                    width: 825px
+
+                .rightImg
+                    width: 720px
+                    height: 500px
+                    object-fit: cover
+
+
+        .moreGoods
+            display: flex
+            flex-direction: column
+
+            justify-content: space-between
+            width: 100%
+            align-items: center
+
+            .title
+                margin-top: 100px
+                width: 100%
+
+                display: flex
+                flex-direction: row
+
+                justify-content: space-between
+
+                .titleText
+                    font-family: $forum
+                    font-size: 45px
+
+                .parText
+                    font-family: $montserrat_Header
+                    font-size: 16px
+                    font-weight: bolder
+
+                    cursor: pointer
+
+            .products
+                margin-top: 50px
+                width: 100%
+
+                display: flex
+                flex-direction: row
+
+                justify-content: space-between

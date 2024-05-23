@@ -1,0 +1,114 @@
+
+    
+@font-face 
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserat/Montserrat-Regular.ttf') format('truetype')
+
+$my-font: 'Montserrat'   
+.container
+    display: flex
+    flex-direction: row
+
+    justify-content: center
+    align-items: flex-start
+
+    font-family: $my-font
+    height: 340px
+
+
+    gap: 50px
+
+    .left
+        display: flex
+        flex-direction: row
+
+        justify-content: center
+        align-items: center
+        padding-bottom: 50px
+        .prew
+            display: flex
+            flex-direction: row
+
+            justify-content: space-between
+            align-items: center
+            
+            width: 795px
+            height: 340px
+
+            .leftButton, .rightButton
+                display: flex
+                flex-direction: column
+
+                justify-content: center
+                align-items: center
+                cursor: pointer
+
+                position: absolute
+                background: none
+
+                z-index: 50
+                border: none
+                width: 80px
+                height: 333px
+                transition: .3s
+
+                &:hover
+                    background: #424242
+                    opacity: 0.5
+                    transition: .3s
+                img
+                    width: 50px
+                    height: 50px
+                    object-fit: cover
+                    opacity: 0.4
+                    cursor: pointer
+                    
+            img
+                width: 795px
+                height: 340px
+                object-fit: cover  
+                cursor: default
+
+                    
+            
+            .rightButton
+                background: none
+
+                transform: scaleX(-1)
+                margin-left: 715px
+
+        .rulet
+            display: flex
+            flex-direction: row
+
+            justify-content: center
+            align-items: center
+
+            gap: 15px
+            position: absolute
+
+            z-index: 500
+            margin-top: 300px
+            
+
+            .block
+                width: 10px
+                height: 10px
+
+                border: 1px solid #7A5D36
+                cursor: pointer
+                transition: .3s
+
+
+                &:hover
+                    background: #7A5D36
+                    transition: .3s
+
+            .selectedBlock
+                background: #7A5D36
+                width: 10px
+                height: 10px
+
+                border: 1px solid #7A5D36
+                cursor: pointer
+                transition: .3s

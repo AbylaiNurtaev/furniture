@@ -2,12 +2,14 @@ import React from 'react'
 import s from './Header.module.sass'
 import { Link, useNavigate } from 'react-router-dom'
 import Select from '../Select/Select'
+import { useSelector } from 'react-redux'
 
 
 
 function Header(){ 
 
     const navigate = useNavigate()
+    const { data } = useSelector(state => state.auth)
 
     const linksList = [
         {
@@ -50,6 +52,15 @@ function Header(){
         },
     ]
 
+    const onLogin = () => {
+        if(data){
+            navigate('/')
+        }else{
+            navigate('/login')
+        }
+    }
+
+
   return (
     <div className={s.container}>
         <div className={s.innerContainer}>
@@ -69,8 +80,9 @@ function Header(){
                 </div>
                 
                 <div className={s.phone}>
-                    <img src="/icons/phone.png" alt="" />
+                    <img className={s.phoneIcon} src="/icons/phone.png" alt="" />
                     <p>+7 (495) 741-99-96</p>
+                    <img onClick={onLogin} className={s.loginIcon} src="https://cdn-icons-png.flaticon.com/512/4360/4360835.png" alt="" />
                 </div>
             </div>
 
@@ -83,11 +95,11 @@ function Header(){
                             <img src="/icons/sofa.png" alt="" />
                             <p>наши работы</p>
                         </div>
-                        <div className={s.block}>
+                        <div className={s.block} onClick={() => navigate('/favouriteItems')}>
                             <img src="/icons/heart.png" alt="" />
                             <p>избранное</p>
                         </div>
-                        <div className={s.block}>
+                        <div className={s.block} onClick={() => {navigate('/cart')}}>
                             <img src="/icons/cart.png" alt="" />
                             <p>корзина</p>
                         </div>

@@ -1,0 +1,97 @@
+@font-face 
+    font-family: 'Forum'
+    src: url('../../fonts/Montserat/Forum-Regular.ttf') format('truetype')
+
+$forum: 'Forum'
+@font-face 
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserat/Montserrat-Regular.ttf') format('truetype')
+
+$montserrat_Header: 'Montserrat' 
+
+
+.container
+    display: flex
+    flex-direction: column
+
+    justify-content: center
+    align-items: center
+
+    width: 100vw
+    margin-top: 100px
+
+    .innerContainer
+        display: flex
+        flex-direction: row
+
+        justify-content: center
+        align-items: center
+
+        width: 1620px
+
+        gap: 100px
+
+        .left
+            display: flex
+            flex-direction: column
+
+            justify-content: flex-start
+            align-items: flex-start
+
+            width: 30%
+            height: 600px
+
+            h1
+                font-family: $forum
+                font-size: 55px
+                color: #7A5D36
+
+            p
+                font-family: $montserrat_Header
+                
+
+            .par
+                margin-top: 20px
+
+            input
+                width: 450px
+                height: 50px
+
+                border: none
+                font-family: $montserrat_Header
+
+                outline: none
+                padding: 0 15px 
+
+            .emailInput
+                margin: 40px 0 10px 0
+                
+
+            button
+                color: white
+                font-family: $montserrat_Header
+
+                background: #7A5D36
+                border: none
+
+                font-size: 18px
+
+                width: 270px
+                height: 50px
+
+                border-radius: 5px
+                margin-top: 40px
+                cursor: pointer
+
+            .link
+                margin-top: 20px
+                cursor: pointer
+                transition: .3s
+
+                &:hover
+                    color: #7A5D36
+                    transition: .3s
+
+
+        .right
+

@@ -1,13 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './HomePage.module.sass'
 import CatalogItem from '../../components/CatalogItem/CatalogItem'
 import Item from '../../components/Item/Item'
 import { useNavigate } from 'react-router-dom'
 import Sofa from '../../components/Sofa/Sofa'
 
+import { fetchGoods } from '../../redux/slices/goods'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAuthMe, selectIsAuth } from '../../redux/slices/auth'
+
+
+
 
 
 function HomePage() {
+  const dispatch = useDispatch()
+  const { goods } = useSelector(state => state.goods)
+  const[favouriteItems, setFavouriteItems] = useState([])
+  const[load, setLoad] = useState(false)
+
+  const isPostLoading = goods.status;
+    
+  useEffect(() => {
+    dispatch(fetchGoods())
+
+
+    dispatch(fetchAuthMe())
+    .then(data => {
+      if(data){
+        setFavouriteItems(data.payload.favouriteItems)
+        setLoad(true)
+
+      }
+  })    
+      .catch(err => {
+        console.log(err)
+        setLoad(true)   
+  })    
+  }, [])
+  
+
   const catalogItems = [
     {
       width: '383px',
@@ -47,34 +79,8 @@ function HomePage() {
     },
   ]
 
-  const navigate = useNavigate()
 
-  const famousItems = [
-    {
-      name: "ИТАЛЬЯНСКАЯ СПАЛЬНЯ FOREVER ФАБРИКИ SIGNORINI & COCO",
-      src: "famousItems/1.png"
-    },
-    {
-      name: "ИТАЛЬЯНСКАЯ СПАЛЬНЯ FOREVER ФАБРИКИ SIGNORINI & COCO",
-      src: "famousItems/2.png"
-    },
-    {
-      name: "ИТАЛЬЯНСКАЯ ГОСТИНАЯ PALAZZO DUCALE LACCATO ФАБРИКИ PRAMA",
-      src: "famousItems/3.png"
-    },
-    {
-      name: "ИТАЛЬЯНСКАЯ СПАЛЬНЯ PALAZZO DUCALE CILIEGIO ФАБРИКИ PRAMA",
-      src: "famousItems/4.png"
-    },
-    {
-      name: "ИТАЛЬЯНСКАЯ СПАЛЬНЯ FOREVER ФАБРИКИ SIGNORINI & COCO",
-      src: "famousItems/5.png"
-    },
-    {
-      name: "ИТАЛЬЯНСКАЯ СПАЛЬНЯ PALAZZO DUCALE LACCATO ФАБРИКИ PRAMA",
-      src: "famousItems/6.png"
-    },
-  ]
+  const navigate = useNavigate()
   return (
     <div>
       <div className={s.container}>
@@ -91,8 +97,8 @@ function HomePage() {
           <div className={s.catalogTitle}>Категории товаров</div>
           <div className={s.catalogItems}>
             {
-              catalogItems.map(({width, text, src, textWidth}) => 
-              <CatalogItem textWidth={textWidth} width={width} text={text} src={src}/>
+              catalogItems.map(({width, text, src, textWidth}, index) => 
+              <CatalogItem key={index} textWidth={textWidth} width={width} text={text} src={src}/>
               )
             }
           </div>
@@ -139,9 +145,10 @@ function HomePage() {
 
             <div className={s.items}>
               {
-                famousItems.map((elem) => 
-                  <Item img={elem.src} name={elem.name}/>
-                )
+                isPostLoading == 'success' && load == true ? 
+                goods.items.slice(0, 6).map((elem, index) => 
+                  <Item liked={favouriteItems.includes(elem._id) ? true : false} key={index} category={elem.category} id={elem._id} img={elem.imageUrl} name={elem.title}/>
+                ) : null
               }
             </div>
           </div>
