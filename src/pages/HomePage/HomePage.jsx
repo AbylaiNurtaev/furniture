@@ -16,7 +16,10 @@ import { fetchAuthMe, selectIsAuth } from '../../redux/slices/auth'
 function HomePage() {
   const dispatch = useDispatch()
   const { goods } = useSelector(state => state.goods)
+
   const[favouriteItems, setFavouriteItems] = useState([])
+  const[cartItems, setCartItems] = useState([])
+
   const[load, setLoad] = useState(false)
 
   const isPostLoading = goods.status;
@@ -29,6 +32,7 @@ function HomePage() {
     .then(data => {
       if(data){
         setFavouriteItems(data.payload.favouriteItems)
+        setCartItems(data.payload.cart)
         setLoad(true)
 
       }
@@ -147,7 +151,7 @@ function HomePage() {
               {
                 isPostLoading == 'success' && load == true ? 
                 goods.items.slice(0, 6).map((elem, index) => 
-                  <Item liked={favouriteItems.includes(elem._id) ? true : false} key={index} category={elem.category} id={elem._id} img={elem.imageUrl} name={elem.title}/>
+                  <Item price={elem.price} cart={cartItems.includes(elem._id) ? true : false} liked={favouriteItems.includes(elem._id) ? true : false} key={index} category={elem.category} id={elem._id} img={elem.imageUrl} name={elem.title}/>
                 ) : null
               }
             </div>

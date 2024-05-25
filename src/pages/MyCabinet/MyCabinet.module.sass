@@ -1,0 +1,75 @@
+@font-face 
+    font-family: 'Forum'
+    src: url('../../fonts/Montserat/Forum-Regular.ttf') format('truetype')
+
+$forum: 'Forum'
+
+
+.container
+    display: flex
+    flex-direction: column
+
+    justify-content: center
+    align-items: center
+
+    width: 100vw
+    .innerContainer
+        display: flex
+        flex-direction: column
+
+        justify-content: flex-start
+        align-items: center
+
+        width: 1620px
+
+
+        .title
+            font-size: 45px
+            font-family: $forum
+
+            margin-top: 100px
+
+        .subTitle
+            font-family: $forum
+            font-size: 30px
+
+            margin-top: 100px
+
+        .favouriteItems
+            display: flex
+            flex-direction: row
+
+            justify-content: flex-start
+            align-items: center
+
+            flex-wrap: wrap
+
+            gap: 30px
+
+        .cartItems
+            display: flex
+            flex-direction: row
+
+            justify-content: flex-start
+            align-items: center
+
+            gap: 30px
+            flex-wrap: wrap
+
+        .logOut
+            width: 220px
+            height: 55px
+
+            color: white
+            background: red
+
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+            font-size: 17px
+            font-weight: bolder
+
+            border: none
+            border-radius: 5px
+            margin-top: 100px
+
+            cursor: pointer
+

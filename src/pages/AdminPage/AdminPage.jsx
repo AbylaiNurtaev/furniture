@@ -16,6 +16,8 @@ function AdminPage() {
     const [imageUrl1, setImageUrl1] = useState("")
     const [imageUrl2, setImageUrl2] = useState("")
     const [deletingTitle, setDeletingTitle] = useState("")
+    const [style, setStyle] = useState("")
+    const [author, setAuthor] = useState("")
 
 
     const[successCreate, setSuccessCreate] = useState(false)
@@ -41,6 +43,12 @@ function AdminPage() {
     }
     const handleDeletingTitle = (e) => {
         setDeletingTitle(e.target.value)
+    }
+    const handleChangeStyle = (e) => {
+        setStyle(e.target.value)
+    }
+    const handleChangeAuthor = (e) => {
+        setAuthor(e.target.value)
     }
     const handleChangeFile = async(e) => {
         try {
@@ -89,6 +97,8 @@ function AdminPage() {
                 imageUrl,
                 imageUrl1,
                 imageUrl2,
+                author,
+                style
             }
             const { data } = await axios.post('/posts', fields)
             if(data){
@@ -140,14 +150,28 @@ function AdminPage() {
                                 <h1>Создать товар</h1>
                                 <input onChange={(e) => {handleChangeTitle(e)}} type="text" placeholder='Название товара'/>
                                 <input onChange={(e) => {handleChangePrice(e)}} type="text" placeholder='Цена'/>
+                                <input onChange={(e) => {handleChangeStyle(e)}} type="text" placeholder='Стиль'/>
+                                <input onChange={(e) => {handleChangeAuthor(e)}} type="text" placeholder='Производитель'/>
                                 <textarea onChange={(e) => {handleChangePar(e)}} placeholder='основной текст товара'/>
                                 <select  onChange={(e) => {handleChangeCategory(e)}}>
                                     <option value="Мебель со склада">Мебель со склада</option>
-                                    <option value="Спальни">Спальни</option>
-                                    <option value="Кровати">Кровати</option>
-                                    <option value="Гостиные">Мебель со склада</option>
-                                    <option value="Кабинеты">Кабинеты</option>
+                                    <option value="Гостиные">Гостиные</option>
                                     <option value="Мягкая мебель">Мягкая мебель</option>
+                                    <option value="Кровати">Кровати</option>
+                                    <option value="Мебель для ванны">Мебель для ванны</option>
+                                    <option value="Детские">Детские</option>
+                                    <option value="Кухни">Кухни</option>
+                                    <option value="Люстры">Люстры</option>
+                                    <option value="Бра">Бра</option>
+                                    <option value="Шторы">Шторы</option>
+                                    <option value="Постельное белье">Постельное белье</option>
+                                    <option value="Для сервировки стола">Для сервировки стола</option>
+                                    <option value="Вазы">Вазы</option>
+                                    <option value="Посуда">Посуда</option>
+                                    <option value="Декор">Декор</option>
+                                    <option value="Картины">Картины</option>
+                                    <option value="Специальное предложение">Специальное предложение</option>
+                                    <option value="Кабинеты">Кабинеты</option>
                                 </select>
                                 <input type="file" onChange={(e) => handleChangeFile(e)} hidden ref={inputFileRef}/>
                                 <input type="file" onChange={(e) => handleChangeFile1(e)} hidden ref={inputFileRef1}/>

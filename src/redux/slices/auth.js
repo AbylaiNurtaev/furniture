@@ -28,6 +28,16 @@ export const fetchDeleteFavourite = createAsyncThunk('auth/deleteFavouriteItem',
     return data
 })
 
+export const fetchAddCart = createAsyncThunk('auth/addCart', async(params) =>{
+    const { data } = await axios.post("/auth/addCart", params)
+    return data
+})
+
+export const fetchDeleteCart = createAsyncThunk('auth/deleteCart', async(params) =>{
+    const { data } = await axios.post("/auth/deleteCart", params)
+    return data
+})
+
 
 const initialState = {
     data: null,

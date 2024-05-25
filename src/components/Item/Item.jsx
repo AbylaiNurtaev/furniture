@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import s from './Item.module.sass'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAuthMe, fetchDeleteFavourite, fetchFavourite } from '../../redux/slices/auth'
+import { fetchAddCart, fetchAuthMe, fetchDeleteCart, fetchDeleteFavourite, fetchFavourite } from '../../redux/slices/auth'
 
-function Item({img, name, id, category, liked}) {
+function Item({img, name, id, category, liked, cart, price}) {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const[hearted, setHearted] = useState(liked)
+  const[carted, setCarted] = useState(cart)
 
 
   const { data } = useSelector(state => state.auth)
@@ -31,6 +32,27 @@ function Item({img, name, id, category, liked}) {
     }
   }
 
+  const onCart = async() => {
+    if(data){
+      if(!carted){
+        if(price != ""){
+          dispatch(fetchAddCart({email: data.email, cartItem: id}))
+          .catch(err => console.log(err))
+          setCarted(true)
+        }else{
+          alert("Товар можно оформить на заказ")
+        }
+      }else{
+        dispatch(fetchDeleteCart({email: data.email, cartItem: id}))
+        .catch((err) => console.log(err))
+        setCarted(false)
+      }
+    }else{
+      alert("Вы не авторизованы, просим войти вас в свой аккаунт")
+    }
+  }
+
+
   
   return (
     <div className={s.container}>
@@ -44,7 +66,7 @@ function Item({img, name, id, category, liked}) {
 
             <div className={s.buttonSide}>
                 <button onClick={() => {navigate(`/fullItem/${category}/${id}`)}}>узнать цену</button>
-                <img className={s.card} src={"/icons/cart.png"} alt="cart" />
+                <img onClick={onCart} className={s.card} src={carted == true ? "/icons/cart_active.png" : "/icons/cart.png"} alt="cart" />
             </div>
         </div>
     </div>

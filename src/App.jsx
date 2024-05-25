@@ -15,6 +15,7 @@ import { fetchAuthMe, selectIsAuth } from "./redux/slices/auth";
 import Registration from "./pages/Registration/Registration";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import FavouriteItems from "./pages/FavouriteItems/FavouriteItems";
+import MyCabinet from "./pages/MyCabinet/MyCabinet";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/admin" element={<AdminPage/>}/>
             <Route path="/favouriteItems" element={<FavouriteItems/>}/>
+            <Route path="/mycabinet/:id" element={<MyCabinet/>}/>
           </Route>
         </Routes>
       </Provider>

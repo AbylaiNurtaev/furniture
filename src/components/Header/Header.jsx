@@ -54,7 +54,7 @@ function Header(){
 
     const onLogin = () => {
         if(data){
-            navigate('/')
+            navigate(`/mycabinet/${data._id}`)
         }else{
             navigate('/login')
         }
