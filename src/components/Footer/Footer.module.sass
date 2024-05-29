@@ -144,6 +144,8 @@ $montserrat_Header: 'Montserrat'
                 gap: 10px
 
 
+            .logoMobile
+                display: none
         .inputBlock
             @include columnFlex
             margin-left: 80px
@@ -151,30 +153,30 @@ $montserrat_Header: 'Montserrat'
             .title
                 font-weight: bolder
             
-            .inputBlock1
-                display: flex
-                flex-direction: row
+            // .inputBlock1
+            //     display: flex
+            //     flex-direction: row
 
-                justify-content: center
-                align-items: center
+            //     justify-content: center
+            //     align-items: center
 
-                margin-top: 30px
+            //     margin-top: 30px
 
-                input
-                    width: 195px
-                    height: 36px
+            //     input
+            //         width: 195px
+            //         height: 36px
 
-                    font-family: $montserrat_Header
-                    border-radius: 0
-                    border: 1px solid black
+            //         font-family: $montserrat_Header
+            //         border-radius: 0
+            //         border: 1px solid black
 
-                button
-                    width: 50px
-                    height: 40px
-                    border: none
+            //     button
+            //         width: 50px
+            //         height: 40px
+            //         border: none
 
-                    background-color: #7A5D36
-                    cursor: pointer
+            //         background-color: #7A5D36
+            //         cursor: pointer
                 
 
             .title1
@@ -189,3 +191,196 @@ $montserrat_Header: 'Montserrat'
                 background: none
                 cursor: pointer
                 border: 1px solid black
+
+
+
+@media screen and ( max-width:  1660px)
+    .container .innerContainer
+        width: 1200px
+
+        .link
+            font-size: 13px
+        .logoBlock
+            img
+                width: 120px
+        
+        .menuBlock
+            margin-left: 20px
+
+        .catalogBlock
+            margin-left: 20px
+            .link
+                white-space: nowrap
+
+        .contactBlock
+            .time
+                width: 160px
+                gap: 8px
+                p
+                    font-size: 13px
+
+                img
+                    width: 20px
+
+        .socialBlock
+            margin-left: 50px
+
+            .vk, .tg, .whatsapp
+                font-size: 14px
+
+        .inputBlock
+            margin-left: 40px
+
+            .phoneOrder
+                width: 150px
+
+@media screen and ( max-width:  1230px)
+    .container
+        height: 520px
+    .container .innerContainer
+        width: 900px
+
+        flex-wrap: wrap
+        
+
+        .logoBlock
+            order: 6    
+            margin-top: 50px
+            margin-left: 50px
+            padding-bottom: 20px
+
+        .inputBlock
+            align-items: center
+
+@media screen and ( max-width:  905px)
+    .container
+        height: 720px
+    .container .innerContainer
+        width: 540px
+        align-items: flex-start
+        justify-content: center
+        .socialBlock
+            margin-left: 0
+            margin-top: 50px
+            gap: 1px
+
+            .title
+                margin-bottom: 20px
+
+            div
+                p
+                    font-size: 12px
+
+        .logoBlock
+            margin-left: 20px
+            padding-bottom: 20px
+            width: 100px
+            .link
+                &:nth-child(3)
+                    width: 100px
+
+        .inputBlock
+            margin-left: 10px
+            .title1
+                font-size: 13px
+            .phoneOrder
+                width: 100px
+                font-size: 10px
+                height: 30px
+                margin-top: 10px
+        .inputBlock
+            align-items: center
+
+
+@media screen and ( max-width:  500px)
+    .container
+        width: 100vw
+
+        justify-content: flex-start
+        align-items: center
+        height: 180px
+        margin-top: 50px
+        .innerContainer
+            width: 350px
+            justify-content: center
+            align-items: flex-start
+
+            .menuBlock, .catalogBlock, .inputBlock
+                display: none
+            
+
+            .logoBlock
+                img
+                    display: none
+
+            .contactBlock
+                width: 40%
+                p
+                    margin-bottom: 15px
+                    font-size: 12px
+
+                .phone
+                    width: 100% 
+                    justify-content: flex-start
+                    gap: 10px
+                    margin-top: 10px
+
+                    p
+                        font-size: 10px
+                        
+                    img
+                        width: 13px
+                        
+                        
+                .email
+                    width: 100%
+                    justify-content: flex-start
+                    gap: 10px
+                    margin-top: 10px
+                    img
+                        width: 13px
+                    
+                    p
+                        font-size: 10px
+
+                .graphText
+                    width: 100%
+                    margin-top: 20px
+                    margin-bottom: 15px
+                
+                .time
+                    width: 100%
+                    justify-content: flex-start
+                    gap: 10px
+
+                    img
+                        width: 13px
+                        height: 13px
+                    p
+                        font-size: 10px
+                        white-space: normal
+
+
+            .socialBlock
+                margin-top: 0
+                .title
+                    font-size: 12px
+                    margin-bottom: 3px
+
+
+                .vk, .tg, .whatsapp
+                    margin-top: 8px
+                    img
+                        width: 15px
+                        height: 15px
+
+                .logoMobile
+                    order: 6
+                    display: flex
+                    width: 100px
+                    margin-top: 20px
+            
+
+            .logoBlock
+                display: none
+            

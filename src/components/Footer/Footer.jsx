@@ -70,16 +70,19 @@ function Footer() {
                         <img src="/icons/вот сап.png" alt="" />
                         <p>hermitage.whatsapp</p>
                     </div>
+                    <img src="/logo192.png" alt='logo' className={s.logoMobile}></img>
+
                 </div>
                 <div className={s.inputBlock}>
-                    <p className={s.title}>подписаться на рассылку</p>
+                    {/* <p className={s.title}>подписаться на рассылку</p>
                     <div className={s.inputBlock1}>
                         <input type="text" placeholder='email' />
                         <button><img src="/icons/arrow.png" alt="arrow" /></button>
-                    </div>
+                    </div> */}
                     <p className={s.title1}>мы вам перезвоним</p>
                     <button className={s.phoneOrder}>заказать звонок</button>
                 </div>
+
 
             </div>
 

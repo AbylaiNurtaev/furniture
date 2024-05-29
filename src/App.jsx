@@ -16,6 +16,7 @@ import Registration from "./pages/Registration/Registration";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import FavouriteItems from "./pages/FavouriteItems/FavouriteItems";
 import MyCabinet from "./pages/MyCabinet/MyCabinet";
+import OptionItem from "./pages/OptionItem/OptionItem";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/admin" element={<AdminPage/>}/>
             <Route path="/favouriteItems" element={<FavouriteItems/>}/>
             <Route path="/mycabinet/:id" element={<MyCabinet/>}/>
+            <Route path="/optionitem/:category" element={<OptionItem/>}/>
           </Route>
         </Routes>
       </Provider>

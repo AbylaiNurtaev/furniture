@@ -1,8 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './CatalogPage.module.sass'
 import Sofa from '../../components/Sofa/Sofa'
+import { useDispatch, useSelector } from 'react-redux'
+import Item from '../../components/Item/Item'
+import { fetchAuthMe } from '../../redux/slices/auth'
 
 function CatalogPage() {
+    const {findedItems} = useSelector(state => state.find)
+    const dispatch = useDispatch()
+
+
+    const[favouriteItems, setFavouriteItems] = useState([])
+    const[cartItems, setCartItems] = useState([])
+
+    const[load, setLoad] = useState(false)
 
     const [filters, setFilters] = useState([
         {
@@ -28,19 +39,8 @@ function CatalogPage() {
             isOpen: false
         },
         {
-            id: 3,
-            name: "тип",
-            subNames: [
-                {
-                    name: 'куда-то',
-                    path: "/"
-                }
-            ],
-            isOpen: false
-        },
-        {
             id: 4,
-            name: "цвет",
+            name: "тон",
             subNames: [
                 {
                     name: 'куда-то',
@@ -48,18 +48,8 @@ function CatalogPage() {
                 }
             ],
             isOpen: false
-        },
-        {
-            id: 5,
-            name: "материал",
-            subNames: [
-                {
-                    name: 'куда-то',
-                    path: "/"
-                }
-            ],
-            isOpen: false
-        },
+        }
+        
     ])
 
     const toggleOpenFilter = (e, id) => {
@@ -73,6 +63,24 @@ function CatalogPage() {
             });
         });
     }
+
+    useEffect(() => {
+        dispatch(fetchAuthMe())
+            .then(data => {
+            if(data){
+                setFavouriteItems(data.payload.favouriteItems)
+                setCartItems(data.payload.cart)
+                setLoad(true)
+
+            }
+        })    
+            .catch(err => {
+                console.log(err)
+                setLoad(true)   
+        })    
+    }, [findedItems])
+
+
 
     return (
         <div className={s.container}>
@@ -91,6 +99,25 @@ function CatalogPage() {
                                 <img src={ elem.isOpen ? "/icons/up.png" : "/icons/down.png"} alt="" />
                             </div>
                         )
+                    }
+                </div>
+
+                <div className={s.items}>
+                    {
+                        findedItems.length >= 1 && load == true ? 
+                        findedItems.map((elem, index) => 
+                        <Item
+                        key={index}
+                        category={elem.category}
+                        id={elem._id}
+                        img={elem.imageUrl}
+                        name={elem.title}
+                        price={elem.price}
+                        cart={cartItems.includes(elem._id) ? true : false}
+                        liked={favouriteItems.includes(elem._id) ? true : false}
+                        
+                        />
+                        ) : <div>Товары не найдены</div>
                     }
                 </div>
                 <Sofa></Sofa>

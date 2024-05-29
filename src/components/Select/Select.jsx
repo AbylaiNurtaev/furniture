@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import s from './Select.module.sass';
+import { useNavigate } from 'react-router-dom';
 
 function Select({ mainText, options }) {
 
+  const navigate = useNavigate()
+  const navigateTo = () => {
+    if(!options){
+      navigate(`/optionitem/${mainText}`)
+    }
+  }
+
+
   return (
     <div className={s.container}>
-      <div className={s.select}>
+      <div className={s.select} onClick={navigateTo}>
         <div className={s.text}>
           {mainText}
         </div>
@@ -14,7 +23,7 @@ function Select({ mainText, options }) {
 
         <div className={s.options}>
         {options ? options.map((option, index) => (
-            <p key={index}>{option}</p>
+            <p onClick={() => {navigate(`/optionItem/${option}`)}} key={index}>{option}</p>
         )): null}
       </div>
     
