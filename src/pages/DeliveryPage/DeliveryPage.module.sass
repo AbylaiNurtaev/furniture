@@ -1,0 +1,81 @@
+@font-face 
+    font-family: 'Forum'
+    src: url('../../fonts/Montserat/Forum-Regular.ttf') format('truetype')
+
+$forum: 'Forum'
+@font-face 
+    font-family: 'Montserrat'
+    src: url('../../fonts/Montserat/Montserrat-Regular.ttf') format('truetype')
+
+$montserrat_Header: 'Montserrat'
+    
+.container
+    display: flex
+    flex-direction: column
+
+    justify-content: center
+    align-items: center
+    width: 100vw
+    .innerContainer
+        width: 1620px
+
+        display: flex
+        flex-direction: column
+
+        justify-content: center
+        align-items: center
+        font-family: $montserrat_Header
+
+        .title
+            font-family: $forum
+            font-size: 35px
+
+        .tableSide 
+            table 
+                width: 100%
+
+                th, td 
+                    border: 1px solid #ddd
+                    padding: 8px
+                    text-align: left
+                    background-color: #ffffff
+                    
+
+                th 
+                    background-color: #f2f2f2
+                    font-weight: bold
+
+                    
+                .tdBig
+                    width: 186px
+                    
+            .subTitle
+                font-weight: bolder
+                margin: 50px 0 20px 0
+                font-size: 20px
+
+
+@media screen and ( max-width:  1660px)
+    .container
+        .innerContainer
+            width: 1200px
+
+
+@media screen and ( max-width:  1230px)
+    .container
+        .innerContainer
+            width: 900px
+    
+@media screen and ( max-width:  920px)
+    .container
+        .innerContainer
+            width: 540px
+
+@media screen and ( max-width:  550px)
+    .container
+        .innerContainer
+            width: 350px
+
+            .title
+                margin-top: 50px
+    

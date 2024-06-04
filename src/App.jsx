@@ -17,6 +17,11 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import FavouriteItems from "./pages/FavouriteItems/FavouriteItems";
 import MyCabinet from "./pages/MyCabinet/MyCabinet";
 import OptionItem from "./pages/OptionItem/OptionItem";
+import Payment from "./pages/Payment/Payment";
+import DeliveryPage from "./pages/DeliveryPage/DeliveryPage";
+import AboutCompany from "./pages/AboutCompany/AboutCompany";
+import Partnership from "./pages/Partnership/Partnership";
+import Reviews from "./pages/Reviews/Reviews";
 
 function App() {
 
@@ -44,6 +49,11 @@ function App() {
             <Route path="/favouriteItems" element={<FavouriteItems/>}/>
             <Route path="/mycabinet/:id" element={<MyCabinet/>}/>
             <Route path="/optionitem/:category" element={<OptionItem/>}/>
+            <Route path="/payment" element={<Payment/>}/>
+            <Route path="/delivery" element={<DeliveryPage/>}/>
+            <Route path="/aboutcompany" element={<AboutCompany/>}/>
+            <Route path="/partnership" element={<Partnership/>}/>
+            <Route path="/reviews" element={<Reviews/>}/>
           </Route>
         </Routes>
       </Provider>

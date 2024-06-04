@@ -57,7 +57,7 @@ function AdminPage() {
             formData.append('image', file);
 
             const { data } = await axios.post('/upload', formData)
-            setImageUrl(`http://localhost:4444${data.url}`)
+            setImageUrl(`https://intuitive-charisma-production.up.railway.app${data.url}`)
         } catch (error) {
             console.log(error)
         }
@@ -69,7 +69,7 @@ function AdminPage() {
             formData.append('image', file);
 
             const { data } = await axios.post('/upload', formData)
-            setImageUrl1(`http://localhost:4444${data.url}`)
+            setImageUrl1(`https://intuitive-charisma-production.up.railway.app${data.url}`)
         } catch (error) {
             console.log(error)
         }
@@ -81,7 +81,7 @@ function AdminPage() {
             formData.append('image', file);
 
             const { data } = await axios.post('/upload', formData)
-            setImageUrl2(`http://localhost:4444${data.url}`)
+            setImageUrl2(`https://intuitive-charisma-production.up.railway.app${data.url}`)
         } catch (error) {
             console.log(error)
         }
@@ -131,6 +131,7 @@ function AdminPage() {
     useEffect(() => {
         dispatch(fetchAuthMe())
             .then(data => {
+                console.log(data)
                 if (data.payload.role != undefined) {
                     setRole(data.payload.role)
                 } else {
@@ -181,7 +182,7 @@ function AdminPage() {
                                 <button onClick={() => {inputFileRef2.current.click()}}>Загрузать картинку 3</button>
                                 {
                                     imageUrl && (
-                                        <img style={{width: "100px"}} src={`http://localhost:4444${imageUrl}`} alt="" />
+                                        <img style={{width: "100px"}} src={`https://intuitive-charisma-production.up.railway.app${imageUrl}`} alt="" />
                                     )
                                 }
                                 <button onClick={onSubmit} className={s.submitBtn}>Опубликовать</button>

@@ -91,6 +91,11 @@ function Header(){
         )
     }
 
+    const scrollToBottom = () => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+    }
+
   return (
     <div className={s.container}>
         <div className={s.innerContainer}>
@@ -118,13 +123,13 @@ function Header(){
                 </div>
                 <div className={s.navbar}>
                     <Link className={s.link} to={'/fabrics'}>фабрики</Link>
-                    <Link className={s.link}>оплата</Link>
-                    <Link className={s.link}>доставка</Link>
-                    <Link className={s.link}>о компании</Link>
-                    <Link className={s.link}>сотрудничество</Link>
-                    <Link className={s.link}>отзывы</Link>
-                    <Link className={s.link}>контакты</Link>
-                    <Link className={s.link}>новости</Link>
+                    <Link className={s.link} to={'/payment'}>оплата</Link>
+                    <Link className={s.link} to={'/delivery'}>доставка</Link>
+                    <Link className={s.link} to={"/aboutcompany"}>о компании</Link>
+                    <Link className={s.link} to={"/partnership"}>сотрудничество</Link>
+                    <Link className={s.link} to={"/reviews"}>отзывы</Link>
+                    <Link className={s.link} onClick={scrollToBottom}>контакты</Link>
+                    <Link className={s.link} to={"/optionitem/Специальное предложение"}>новости</Link>
                 </div>
                 
                 <div className={s.phone}>

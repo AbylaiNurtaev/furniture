@@ -30,7 +30,10 @@ function FullItem() {
                 ]);
                 return data.find(good => good._id === id);
             })
-            .then(res => setItem(res))
+            .then(res => {
+                setItem(res)
+                console.log(res)
+    })
             .catch(err => console.log(err));
     }, [id, category]);
 
