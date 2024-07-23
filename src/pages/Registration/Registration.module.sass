@@ -87,5 +87,45 @@ $montserrat_Header: 'Montserrat'
 
 
 
-        .right
+@media screen and ( max-width:  1600px)
+    .container
+        .innerContainer
+            width: 1200px
+    
+@media screen and ( max-width:  1220px)
+    .container
+        .innerContainer
+            width: 900px
+            justify-content: space-between
+            .left
+                input
+                    width: 350px
 
+            .right
+                width: 50%
+
+@media screen and ( max-width:  900px)
+    .container
+        margin-top: 20px
+        .innerContainer
+            width: 540px
+            flex-direction: column
+
+            align-items: center
+            gap: 0
+
+            .left
+                width: 100%
+                align-items: center
+
+            .right
+                width: 80%
+    
+@media screen and ( max-width:  540px)
+    .container
+        .innerContainer
+            width: 350px
+            .left
+                input
+                    width: 320px
+    

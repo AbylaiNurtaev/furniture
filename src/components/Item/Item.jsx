@@ -56,11 +56,11 @@ function Item({img, name, id, category, liked, cart, price}) {
   
   return (
     <div className={s.container}>
-        <img className={s.top} src={img} alt="mainImage" />
+        <img className={s.top}  onClick={() => {navigate(`/fullItem/${category}/${id}`)}} src={img} alt="mainImage" />
 
         <div className={s.bottom}>
             <div className={s.nameSide}>
-                <p>{name}</p>
+                <p onClick={() => {navigate(`/fullItem/${category}/${id}`)}}>{name}</p>
                 <img onClick={favouriteItem} className={s.heart} src={ hearted == true ? "/icons/heart_active.png" : "/icons/heart.png"} alt="cart" />
             </div>
 

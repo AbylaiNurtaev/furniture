@@ -22,6 +22,7 @@ import DeliveryPage from "./pages/DeliveryPage/DeliveryPage";
 import AboutCompany from "./pages/AboutCompany/AboutCompany";
 import Partnership from "./pages/Partnership/Partnership";
 import Reviews from "./pages/Reviews/Reviews";
+import PolicyPage from "./pages/PolicyPage/PolicyPage";
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
             <Route path="/aboutcompany" element={<AboutCompany/>}/>
             <Route path="/partnership" element={<Partnership/>}/>
             <Route path="/reviews" element={<Reviews/>}/>
+            <Route path="/policyPage" element={<PolicyPage/>}/>
           </Route>
         </Routes>
       </Provider>

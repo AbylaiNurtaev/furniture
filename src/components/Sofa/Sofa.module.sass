@@ -27,6 +27,80 @@ $forum: 'Forum'
     width: 100%
     margin-top: 100px
 
+    .form
+        display: none
+        flex-direction: column
+
+        justify-content: flex-start
+        align-items: center
+
+        width: 380px
+        height: 180px
+
+        border-radius: 10px
+        background: white
+
+        position: absolute
+        z-index: 50
+
+        box-shadow: 0px 0px 33px -4px rgba(0,0,0,0.75)
+
+        img
+            width: 20px
+            cursor: pointer
+            position: absolute
+            right: 10px
+            margin-top: 10px
+            
+
+        input
+            width: 70%
+            height: 35px
+
+            border-radius: 5px
+            border: 1px solid gray
+            margin-top: 15px
+            font-family: $montserrat_Header
+
+        button
+            width: 40%
+            height: 40px
+
+            background: #7A5D36
+
+            font-family: $montserrat_Header
+            color: white
+
+            border: none
+            border-radius: 4px
+            cursor: pointer
+
+            margin-top: 20px
+
+        .successBlock
+            display: flex
+            flex-direction: column
+
+            justify-content: center
+            align-items: center
+
+            .gif
+                width: 100px
+                position: relative
+
+            .closeButton
+                width: 20px
+                cursor: pointer
+                position: absolute
+                right: 10px
+                top: 10px
+            
+
+            p
+                font-size: 20px
+                font-family: $montserrat_Header
+                margin-top: 20px    
+
     .left
         .title
             @include title
@@ -43,6 +117,7 @@ $forum: 'Forum'
             .phoneText
                 font-family: $montserrat_Header
                 font-size: 16px
+                cursor: pointer
             
         .email
             @include centerFlex
@@ -56,6 +131,7 @@ $forum: 'Forum'
             .emailText
                 font-family: $montserrat_Header
                 font-size: 16px
+                cursor: pointer
             
 
 

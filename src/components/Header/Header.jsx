@@ -21,11 +21,8 @@ function Header(){
 
     const linksList = [
         {
-            mainText: "мебель со склада",
-        },
-        {
             mainText: "спальни",
-            options: ["гостиные", "мягкая мебель", "детские", "кухни", "мебель для ванны"]
+            options: ["гостиные", "мягкая мебель", "детская мебель", "кухни", "мебель для ванны"]
         },
         {
             mainText: "гостиные"
@@ -34,7 +31,10 @@ function Header(){
             mainText: "мягкая мебель"
         },
         {
-            mainText: "детские"
+            mainText: "детская мебель"
+        },
+        {
+            mainText: "прихожие"
         },
         {
             mainText: "кухни"
@@ -53,11 +53,8 @@ function Header(){
         },
         {
             mainText: "аксессуары",
-            options: ["вазы", "посуда", "декор", "картины"]
-        },
-        {
-            mainText: "Специальное предложение"
-        },
+            options: ["посуда", "декор", "картины"]
+        }
     ]
 
     const onLogin = () => {
@@ -107,19 +104,19 @@ function Header(){
                             <img className={s.closeIcon} onClick={toggleBurgerMenu} src="/closeIcon.png" alt="" />
                             <img className={s.logo} src="/logo192.png" alt="" />
                             <Link onClick={toggleBurgerMenu} className={s.link1} to={'/fabrics'}>фабрики</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>оплата</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>доставка</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>о компании</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>сотрудничество</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>отзывы</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>контакты</Link>
-                            <Link onClick={toggleBurgerMenu} className={s.link1}>новости</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/payment'} className={s.link1}>оплата</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/delivery'} className={s.link1}>доставка</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/aboutcompany'} className={s.link1}>о компании</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/partnership'} className={s.link1}>сотрудничество</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/reviews'} className={s.link1}>отзывы</Link>
+                            <Link onClick={() => {toggleBurgerMenu(); scrollToBottom()}}  className={s.link1}>контакты</Link>
+                            <Link onClick={toggleBurgerMenu} to={'/optionitem/Специальное предложение'} className={s.link1}>новости</Link>
                         </div>
                     </div> 
                 }
             <div className={s.navigationSide}>
-                <div className={s.adres}>
-                    г. Москва, Заморенова, 5/1
+                <div className={s.adres} style={{fontSize: '12px'}}>
+                Москва, ул.Нижняя сыромятническая д.10, стр 2
                 </div>
                 <div className={s.navbar}>
                     <Link className={s.link} to={'/fabrics'}>фабрики</Link>
@@ -133,8 +130,8 @@ function Header(){
                 </div>
                 
                 <div className={s.phone}>
-                    <img className={s.phoneIcon} src="/icons/phone.png" alt="" />
-                    <p>+7 (495) 741-99-96</p>
+                    <img style={{cursor: "pointer"}}  onClick={() => {window.location.href = 'tel:+79153342307'}} className={s.phoneIcon} src="/icons/phone.png" alt="" />
+                    <p  style={{cursor: "pointer"}} onClick={() => {window.location.href = 'tel:+79153342307'}}>+7 (915) 334-23-07</p>
                     <img onClick={onLogin} className={s.loginIcon} src="https://cdn-icons-png.flaticon.com/512/4360/4360835.png" alt="" />
                     <img onClick={toggleBurgerMenu} className={s.burgerMenuBtn} src="/icons/burger-menu.png" alt="" />
                 </div>
@@ -154,7 +151,7 @@ function Header(){
                         <img onClick={handleSubmitFind} src="/icons/findIcon.png" alt="" className={s.findIcon} />
                     </div>
                     <div className={s.icons}>
-                        <div className={s.block}>
+                        <div className={s.block} onClick={() => navigate('/optionitem/наши работы')}>
                             <img src="/icons/sofa.png" alt="" />
                             <p>наши работы</p>
                         </div>
@@ -177,7 +174,7 @@ function Header(){
                 </div>  
 
                 <div className={s.iconsMobile}>
-                        <div className={s.block}>
+                        <div className={s.block} onClick={() => navigate('/optionitem/наши работы')}>
                             <img src="/icons/sofa.png" alt="" />
                             <p>наши работы</p>
                         </div>

@@ -53,7 +53,7 @@ function MyCabinet() {
                     {   favouriteItems && cartItems.length >= 1 &&
                         favouriteItems.map((elem, index) => 
                             <Item cart={cartItems.includes(elem._id) ? true : false} category={elem.category} id={elem._id} img={elem.imageUrl} liked={true} name={elem.title} key={index}/>
-                    )
+                    ) 
                 }
                 </div>
 

@@ -14,7 +14,7 @@ function Select({ mainText, options }) {
 
   return (
     <div className={s.container}>
-      <div className={s.select} onClick={navigateTo}>
+      <div className={s.select} onClick={() => navigate(`/optionitem/${mainText}`)}>
         <div className={s.text}>
           {mainText}
         </div>

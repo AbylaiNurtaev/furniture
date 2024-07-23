@@ -64,7 +64,7 @@ $my-font: 'Montserrat'
                     cursor: pointer
                     
             img
-                width: 795px
+                width: 100%
                 height: 340px
                 object-fit: cover  
                 cursor: default
@@ -112,3 +112,37 @@ $my-font: 'Montserrat'
                 border: 1px solid #7A5D36
                 cursor: pointer
                 transition: .3s
+
+@media screen and ( max-width:  1660px)
+    .container
+        height: 300px
+        .left
+            .prew
+                width: 600px
+
+                .rightButton
+                    margin-left: 520px
+                    height: 340px
+
+                .leftButton
+                    height: 340px
+
+@media screen and ( max-width:  540px)
+    .container
+        height: 200px
+        .left
+            .prew
+                width: 350px
+                height: 200px
+
+                img
+                    height: 200px
+                .rightButton
+                    margin-left: 305px
+
+                .leftButton, .rightButton
+                    height: 200px
+                    width: 45px
+
+            .rulet
+                margin-top: 170px

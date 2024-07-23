@@ -25,6 +25,7 @@ function HomePage() {
   const isPostLoading = goods.status;
     
   useEffect(() => {
+    console.log(process.env.REACT_APP_BASE_URL);
     dispatch(fetchGoods())
 
 
@@ -46,41 +47,67 @@ function HomePage() {
 
   const catalogItems = [
     {
-      width: '383px',
-      text: 'мебель со склада',
-      src: 'catalogItems/1.png',
-      textWidth: '350px'
-    },
-    {
       width: '520px',
       text: 'спальни',
       src: 'catalogItems/2.png',
-      textWidth: '475px'
-    },
-    {
-      width: '657px',
-      text: 'кровати',
-      src: 'catalogItems/3.png',
-      textWidth: '600px'
-    },
-    {
-      width: '657px',
-      text: 'гостиные',
-      src: 'catalogItems/4.png',
-      textWidth: '600px'
-    },
-    {
-      width: '520px',
-      text: 'кабинеты',
-      src: 'catalogItems/5.png',
-      textWidth: '475px'
+      textWidth: '475px',
+      href: "/optionitem/спальни"
     },
     {
       width: '383px',
-      text: 'мебель со склада',
-      src: 'catalogItems/6.png',
-      textWidth: '350px'
+      text: 'гостиные',
+      src: 'catalogItems/1.png',
+      textWidth: '350px',
+      href: "/optionitem/гостиные"
     },
+    {
+      width: '657px',
+      text: 'мягкая мебель',
+      src: 'catalogItems/3.png',
+      textWidth: '600px',
+      href: "/optionitem/мягкая мебель"
+    },
+    {
+      width: '657px',
+      text: 'детская мебель',
+      src: 'https://cdn.domdivanov.kz/files/imgs/ig1111894/garnitur-detskii-zoo-1@kit-740x540.jpg',
+      textWidth: '600px',
+      href: "/optionitem/детская мебель"
+    },
+    {
+      width: '457px',
+      text: 'кухни',
+      src: '/catalogItems/kitchen.jpg',
+      textWidth: '400px',
+      href: "/optionitem/кухни"
+    },
+    {
+      width: '457px',
+      text: 'мебель для ванны',
+      src: 'https://ollis.kz/wp-content/uploads/2022/06/%D0%A1%D0%B0%D0%BD%D1%83%D0%B7%D0%B5%D0%BB-%D1%85%D0%BE%D0%B7%D1%8F%D0%B9%D1%81%D0%BA%D0%B8%D0%B9-Terra_5.jpg',
+      textWidth: '430px',
+      href: "/optionitem/мебель для ванны"
+    },
+    {
+      width: '597px',
+      text: 'свет',
+      src: 'https://svetcity.com/images/blog/456/fd.jpg',
+      textWidth: '560px',
+      href: "/optionitem/свет"
+    },
+    {
+      width: '557px',
+      text: 'текстиль',
+      src: 'https://ir-3.ozone.ru/s3/multimedia-b/c1000/6495535799.jpg',
+      textWidth: '530px',
+      href: "/optionitem/текстиль"
+    },
+    {
+      width: '407px',
+      text: 'аксессуары',
+      src: 'https://images.prom.ua/3172762386_w300_h300_nastennyj-dekor-sun.jpg',
+      textWidth: '370px'
+    }
   ]
 
 
@@ -91,8 +118,9 @@ function HomePage() {
         <div className={s.mainImage}>
           <img src="/images/HomePage.png" alt="mainImage" />
           <div className={s.block}>
-            <h1 className={s.mainText}>Итальянские гостиные</h1>
-            <h1 className={s.parText}>Классика, современные, элитные</h1>
+            <h1 className={s.mainText}>Мебель от мировых фабрик</h1>
+            <h1 className={s.parText}>Современная классика,модерн,
+            ар-деко, неоклассика, минимализм</h1>
             <button className={s.catalogBtn} onClick={() => {navigate('/catalog')}}>в каталог</button>
           </div>
         </div>
@@ -101,8 +129,8 @@ function HomePage() {
           <div className={s.catalogTitle}>Категории товаров</div>
           <div className={s.catalogItems}>
             {
-              catalogItems.map(({width, text, src, textWidth}, index) => 
-              <CatalogItem key={index} textWidth={textWidth} width={width} text={text} src={src}/>
+              catalogItems.map(({width, text, src, textWidth, href}, index) => 
+              <CatalogItem key={index} href={href} textWidth={textWidth} width={width} text={text} src={src}/>
               )
             }
           </div>
@@ -110,9 +138,13 @@ function HomePage() {
 {/* ------------------------------ИНФОРМАЦИЯ-------------------------------------- */}
           <div className={s.infoPanel}>
             <div className={s.left}>
-              <div className={s.title}>Итальянская мебель GRAND ITALIA</div>
-              <div className={s.par}>Ассортимент мебельного центра GRAND ITALIA представлен самой полной коллекцией мебели Италии в Москве, которая отражает уровень принимаемых вами решений и напоминает о любви к комфорту.</div>
-              <div className={s.blocks}>
+              <div className={s.title}>Мебельный салон Hermitage</div>
+              <div className={s.par}>Мебельный салон Hermitage работает на рынке более 30 лет. В нашем салоне Вы можете подобрать премиальную мебель в различных стилистических направлениях, таких как: ар-деко, современный стиль, классика, неоклассика, модерн, минимализм от фабрик из Италии, Испании,Бельгии, Китая и других стран. 
+А современные  дизайнерские светильники и аксессуары гармонично дополнят ваш интерьер. 
+Сотрудничаем с крупнейшими салонами мебели по всей России. 
+Работаем под любой запрос клиента.
+</div>
+              {/* <div className={s.blocks}>
 
                 <div className={s.block}>
                   <div className={s.number}>1200</div>
@@ -130,7 +162,7 @@ function HomePage() {
                   <div className={s.text}>специалистов работают для Вас</div>
                 </div>
 
-              </div>
+              </div> */}
             </div>
 
             <img className={s.right} src="/images/HomePage2.png" alt="" />
@@ -144,14 +176,13 @@ function HomePage() {
 
             <div className={s.title}>
               <p className={s.titleText}>Популярные товары</p>
-              <p className={s.seeMoreText}>смотреть все</p>
             </div>
 
             <div className={s.items}>
               {
                 isPostLoading == 'success' && load == true ? 
                 goods.items.slice(0, 6).map((elem, index) => 
-                  <Item price={elem.price} cart={cartItems.includes(elem._id) ? true : false} liked={favouriteItems.includes(elem._id) ? true : false} key={index} category={elem.category} id={elem._id} img={elem.imageUrl} name={elem.title}/>
+                  <Item price={elem.price} cart={cartItems.includes(elem._id) ? true : false} liked={favouriteItems.includes(elem._id) ? true : false} key={index} category={elem.category} id={elem._id} img={elem.images[0]} name={elem.title}/>
                 ) : null
               }
             </div>
@@ -163,10 +194,9 @@ function HomePage() {
               <div className={s.title}>Преимущества и плюсы итальянской мебели</div>
               <div className={s.par}>Над созданием каждого гарнитура или отдельно взятого предмета трудится целый коллектив дизайнеров, каждый из которых вкладывает в проект все свое мастерство и частичку души. Поэтому Вы не найдете двух одинаковых кресел, зеркал, изголовий даже в смежных коллекциях – любая вещь по-своему оригинальна, а вручную выполненный декор делает ее во всех смыслах эксклюзивной.  <br/><br/><br/>
 Причина долговечности – в премиальном уровне производства.<br/> Мебель из Италии – эталон качества, ведь она:<br/>
-1) изготавливается только из высококлассных материалов – из благородной древесины, элитного шпона, чистых металлов и стекол; <br/><br/>
-2) максимально защищена от старения и агрессивных воздействий окружающей среды – фирменными лаками с антибактериальным эффектом, предохраняющими от выгорания, трещин, жуков-короедов; <br/><br/>
-3) проходит многоступенчатый контроль, с проверками и отбраковкой на каждом этапе выпуска; <br/><br/>
-4) украшается вручную – опытный мастер замечает то, что при сборке пропускают машины, и доводит внешний вид вашей мебели до идеала.</div>
+изготавливается только из высококлассных материалов – из благородной древесины, элитного шпона, чистых металлов и стекол; <br/><br/>
+максимально защищена от старения и агрессивных воздействий окружающей среды – фирменными лаками с антибактериальным эффектом, предохраняющими от выгорания, трещин, жуков-короедов; <br/><br/>
+</div>
             </div>
             <img  className={s.right} src="/information/info1.png" alt="" />
           </div>

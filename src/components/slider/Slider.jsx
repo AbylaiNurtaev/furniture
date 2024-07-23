@@ -1,51 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import s from './Slider.module.sass';
 import { useNavigate } from 'react-router-dom';
 
+function Slider({  images  }) {
+    const [currentImage, setCurrentImage] = useState(0);
+    const navigate = useNavigate();
 
-
-function Slider({img1, img2, img3}) {
-    const [currentImage, setCurrentImage] = useState(0)
-
-    const [images, setImages] = useState([img1, img2, img3])
-    const navigate = useNavigate()
+    useEffect(() => {
+        if (images.length > 0) {
+            setCurrentImage(0);
+        }
+    }, [images]);
 
     const changeIndex = (e, index) => {
-        e.stopPropagation()
-        if (currentImage + index == images.length) {
-            setCurrentImage(0)
-            
-        } else if (currentImage + index < 0) {
-            setCurrentImage(images.length - 1)
-        }
-        else {
-            setCurrentImage(prev => prev + index);
-        }
-    }
+        e.stopPropagation();
+        const newIndex = (currentImage + index + images.length) % images.length;
+        setCurrentImage(newIndex);
+    };
 
     const handleChooseImage = (index) => {
-        setCurrentImage(index)
-    }
+        setCurrentImage(index);
+    };
 
     return (
         <div className={s.container}>
-        <meta httpEquiv="Cache-Control" content="max-age=3600"></meta>
-
-
-        <div className={s.left}>
-            <div className={s.prew} style={{cursor: 'pointer'}}>
-                <button onClick={(e) => { changeIndex(e, -1) }} className={s.leftButton}><img src="/icons/slider_arrow.png" alt="" /></button>
-                <img src={images[currentImage]} alt="preview" />
-                <button onClick={(e) => { changeIndex(e, 1) }} className={s.rightButton}><img src="/icons/slider_arrow.png" alt="" /></button>
+            <meta httpEquiv="Cache-Control" content="max-age=3600" />
+            <div className={s.left}>
+                <div className={s.prew} style={{ cursor: 'pointer' }}>
+                    <button onClick={(e) => changeIndex(e, -1)} className={s.leftButton}>
+                        <img src="/icons/slider_arrow.png" alt="prev" />
+                    </button>
+                    <img src={images[currentImage]} alt="preview" />
+                    <button onClick={(e) => changeIndex(e, 1)} className={s.rightButton}>
+                        <img src="/icons/slider_arrow.png" alt="next" />
+                    </button>
+                </div>
+                <div className={s.rulet}>
+                    {images.map((_, index) => (
+                        <div
+                            key={index}
+                            className={currentImage === index ? s.selectedBlock : s.block}
+                            onClick={() => handleChooseImage(index)}
+                        ></div>
+                    ))}
+                </div>
             </div>
-            <div className={s.rulet}>
-                <div className={currentImage == 0 ? s.selectedBlock : s.block} onClick={() => handleChooseImage(0)}></div>
-                <div className={currentImage == 1 ? s.selectedBlock : s.block} onClick={() => handleChooseImage(1)}></div>
-                <div className={currentImage == 2 ? s.selectedBlock : s.block} onClick={() => handleChooseImage(2)}></div>
-            </div>
-        </div>
-
-
         </div>
     );
 }

@@ -11,7 +11,7 @@ function FavouriteItems() {
 
     const [items, setItems] = useState([])
     // const { data } = useSelector(state => state.auth)
-
+    const [status, setStatus] = useState("Загрузка товаров...")
 
     useEffect(() => {
         dispatch(fetchAuthMe())
@@ -21,7 +21,13 @@ function FavouriteItems() {
             .then(items => {
                 return items.payload.filter((item) => data.payload.favouriteItems.includes(item._id))
             })
-            .then(item => setItems(item))
+            .then(item => {
+                setItems(item)
+                if(item.length < 1){
+                    setStatus("Нету избранных товаров")
+                }
+        })
+            
         })
         
     }, [])
@@ -34,10 +40,10 @@ function FavouriteItems() {
             <div className={s.items}>
 
             {
-                items.length > 1 ? 
+                items.length >= 1 ? 
                 items.map((elem, index) => 
                     <Item liked={true} key={index} category={elem.category} id={elem._id} img={elem.imageUrl} name={elem.title}/>
-                ) : <div className={s.title} style={{marginTop: '100px', fontSize: '30px'}}>Нету избранных товаров</div>
+                ) : <div className={s.title} style={{marginTop: '100px', fontSize: '30px'}}>{status}</div>
             }
             </div>
         </div>

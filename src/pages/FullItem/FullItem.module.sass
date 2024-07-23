@@ -71,6 +71,18 @@ $montserrat_Header: 'Montserrat'
 
                 height: 100%
 
+                .addToCard
+                    width: 200px
+                    height: 40px
+
+                    border: none
+
+                    color: white
+
+                    background: #7A5D36
+                    cursor: pointer
+                    margin-top: 20px
+
                 .par
                     font-family: $montserrat_Header
                     font-size: 14px
@@ -135,6 +147,7 @@ $montserrat_Header: 'Montserrat'
                 flex-direction: column
 
                 justify-content: center
+                
                 align-items: flex-start
 
                 width: 50%
@@ -234,10 +247,9 @@ $montserrat_Header: 'Montserrat'
                     width: 825px
 
                 .rightImg
-                    width: 720px
-                    height: 500px
+                    width: 50%
+                    height: 420px
                     object-fit: cover
-
 
         .moreGoods
             display: flex
@@ -275,3 +287,122 @@ $montserrat_Header: 'Montserrat'
                 flex-direction: row
 
                 justify-content: space-between
+
+@media screen and ( max-width:  1660px)
+    .container
+        .innerContainer
+            width: 1200px
+
+            .secondSide
+                .secondImageSide
+                    margin-top: 30px
+
+@media screen and ( max-width:  1220px)
+    .container
+        .innerContainer
+            width: 900px
+            align-items: center
+
+            .slideSide
+                flex-direction: column
+                align-items: center
+
+                .right
+                    align-items: center
+                    justify-content: center
+                    text-align: center
+
+            .options
+                width: 100%
+                align-items: center
+
+                .navigationSide
+
+                    align-items: center
+                    width: 70%
+
+                    .navigationArrow
+                        padding-right: 150px 
+
+                    .defaultLine
+                        width: 50%
+
+
+                .bottom
+                    justify-content: center
+                    align-items: center
+
+                    text-align: center
+
+            .secondSide
+                display: none
+
+            .moreGoods
+                width: 90%
+
+                .title
+                    .titleText
+                        font-size: 35px
+
+                .products
+                    flex-wrap: wrap
+                    justify-content: center
+
+@media screen and ( max-width:  910px)
+    .container
+        .innerContainer
+            width: 540px
+            .options
+                .top
+                    h4
+                        font-size: 30px
+                .bottom
+                    .deliveryText, .paymentText
+                        width: 90%
+
+                    
+                .navigationSide
+                    display: none
+
+    
+@media screen and ( max-width:  540px)
+    .container
+        .innerContainer
+            width: 350px
+
+            .path
+                width: 80%
+                margin-top: 20px
+                p
+                    font-size: 17px
+
+            .title
+                margin-top: 20px
+
+            .options
+                .top
+                    h4
+                        font-size: 20px
+
+                .bottom
+                    gap: 50px
+                    .left
+                        .bold
+                            white-space: nowrap
+                            font-size: 14px
+
+                    .right
+                        .par
+                            font-size: 14px
+
+
+            .moreGoods
+                width: 95%
+
+                .title
+                    align-items: center
+                    .titleText
+                        font-size: 23px
+
+                    .parText
+                        font-size: 14px

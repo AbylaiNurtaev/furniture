@@ -5,23 +5,45 @@ import axios from '../../axios';
 import Slider from '../../components/slider/Slider';
 import Sofa from '../../components/Sofa/Sofa';
 import Item from '../../components/Item/Item';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAddCart } from '../../redux/slices/auth';
 
 function FullItem() {
     const { id, category } = useParams();
     const [item, setItem] = useState(null);
     const [moreGoods, setMoreGoods] = useState([]);
     const [currentOption, setCurrentOption] = useState(1);
-    const [counter, setCounter] = useState(0);
     const [margin, setMargin] = useState('');
     const [size, setSize] = useState('');
 
+    const [carted, setCarted] = useState(false);
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { data } = useSelector(state => state.auth);
+
+    const addToCard = async () => {
+        if (data) {
+            if (!carted) {
+                setCarted(true);
+                if (item.price !== "") {
+                    dispatch(fetchAddCart({ email: data.email, cartItem: id }))
+                        .catch(err => console.log(err));
+                } else {
+                    alert("Товар можно оформить на заказ");
+                }
+            } else {
+                alert("Вы уже добавили товар в корзину");
+            }
+        } else {
+            alert("Вы не авторизованы, просим войти вас в свой аккаунт");
+        }
+    };
 
     useEffect(() => {
         axios
             .get('/posts')
             .then(({ data }) => {
-                console.log(data);
                 const anotherGoods = data.filter(elem => elem._id !== id && elem.category === category);
                 setMoreGoods([
                     anotherGoods[0] || null,
@@ -31,14 +53,11 @@ function FullItem() {
                 return data.find(good => good._id === id);
             })
             .then(res => {
-                setItem(res)
+                setItem(res);
                 console.log(res)
-    })
+            })
             .catch(err => console.log(err));
     }, [id, category]);
-
-    const increment = () => setCounter(prev => prev + 1);
-    const decrement = () => counter > 0 && setCounter(prev => prev - 1);
 
     const handleChangeOption = index => {
         setCurrentOption(index);
@@ -71,19 +90,18 @@ function FullItem() {
                     </div>
                     <div className={s.title}>{item.title}</div>
                     <div className={s.slideSide}>
-                        <Slider className={s.left} img1={item.imageUrl} img2={item.imageUrl1} img3={item.imageUrl2} />
+                        <Slider
+                            className={s.left}
+                            images={item.images}
+                        />
                         <div className={s.right}>
                             <div className={s.par}>{item.text}</div>
                             <div className={s.price}>{item.price || "На заказ"}</div>
-                            <div className={s.counter}>
-                                <button className={s.decrementBtn} onClick={decrement}>
-                                    <img src="/icons/-.png" alt="Decrement" />
-                                </button>
-                                <div className={s.number}>{counter}</div>
-                                <button className={s.incrementBtn} onClick={increment}>
-                                    <img src="/icons/+.png" alt="Increment" />
-                                </button>
-                            </div>
+                            <button onClick={addToCard} className={s.addToCard}>Добавить в корзину</button>
+                            {
+                                !item.price &&
+                                <button onClick={() => window.location.href = "https://wa.me/79153342307"} style={{ background: "none", border: '1px solid #7A5D36', color: "#7A5D36" }} className={s.addToCard}>Узнать цену</button>
+                            }
                         </div>
                     </div>
                     <div className={s.options}>
@@ -134,7 +152,7 @@ function FullItem() {
                         <h2 className={s.title}>{item.title}</h2>
                         <div className={s.secondImageSide}>
                             <div className={s.par}>{item.text}</div>
-                            <img className={s.rightImg} src={item.imageUrl2} alt="Item" />
+                            <img className={s.rightImg} src={item.images[2]} alt="Item" />
                         </div>
                     </div>
                     {moreGoods.length > 0 && (

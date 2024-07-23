@@ -1,116 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import s from './Fabrics.module.sass'
 import Sofa from '../../components/Sofa/Sofa'
+import { useDispatch } from 'react-redux'
+
+import { fetchGoods } from '../../redux/slices/goods'
+import { useNavigate } from 'react-router-dom'
 function Fabrics() {
 
-    const fabricsList = [
-        {
-          "mainLetter": "A",
-          "links": [
-            "A.R. Arredamenti",
-            "Alberto & Mario Ghezzani",
-            "Alta Moda",
-            "Altavilla",
-            "AM Classic",
-            "Andrea Fanfani",
-            "Angelo Cappellini",
-            "Antonelli Moravio & C",
-            "Arredo Classic",
-            "Asnaghi Interiors"
-          ]
-        },
-        {
-          "mainLetter": "B",
-          "links": [
-            "Bacci Stile",
-            "Bakokko",
-            "Barnini Oseo",
-            "BM Style"
-          ]
-        },
-        {
-          "mainLetter": "C",
-          "links": [
-            "Cappelletti",
-            "Casa+39",
-            "Cavio"
-          ]
-        },
-        {
-          "mainLetter": "D",
-          "links": [
-            "Domus"
-          ]
-        },
-        {
-          "mainLetter": "E",
-          "links": [
-            "Ebanisteria Bacci"
-          ]
-        },
-        {
-          "mainLetter": "F",
-          "links": [
-            "Ferretti & Ferretti"
-          ]
-        },
-        {
-          "mainLetter": "G",
-          "links": [
-            "Grilli"
-          ]
-        },
-        {
-          "mainLetter": "J",
-          "links": [
-            "Jumbo Collection"
-          ]
-        },
-        {
-          "mainLetter": "K",
-          "links": [
-            "Keoma"
-          ]
-        },
-        {
-          "mainLetter": "M",
-          "links": [
-            "Malerba",
-            "Mobil Piu",
-            "Mobil Piu",
-            "Modenese Gastone",
-            "Modo 10",
-            "Morello Gianpaolo"
-          ]
-        },
-        {
-          "mainLetter": "P",
-          "links": [
-            "PM4",
-            "Prama",
-            "Prestige"
-          ]
-        },
-        {
-          "mainLetter": "S",
-          "links": [
-            "Signorini & Coco"
-          ]
-        },
-        {
-          "mainLetter": "V",
-          "links": [
-            "Valderamobili",
-            "Volpi"
-          ]
-        },
-        {
-          "mainLetter": "T",
-          "links": [
-            "Turri"
-          ]
+    const [fabricsList, setFabricsList] = useState([])
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+
+    useState(() => {
+      dispatch(fetchGoods())
+      .then(data => {
+
+        let fabrics = data.payload.filter((elem) => elem.category === 'Фабрики')
+        console.log(fabrics)
+        let letters = [];
+        let obj = []
+        for(let i = 0; i < fabrics.length; i++){
+          if(letters.includes(fabrics[i].title.toLowerCase()[0])){
+            let fabric = obj.find((elem) => elem.mainLetter.toLowerCase() == fabrics[i].title.toLowerCase()[0]);
+            fabric.links.push(fabrics[i].title)
+            
+          }
+          else{
+            obj.push({
+              mainLetter : fabrics[i].title.toLowerCase()[0],
+              links : [fabrics[i].title.toLowerCase()],
+              id: fabrics[i]._id
+            })
+            letters.push(fabrics[i].title.toLowerCase()[0])
+          }
         }
-      ]
+        setFabricsList(obj)
+
+      })
+    })
+
+        // {
+        //   "mainLetter": "T",
+        //   "links": [
+        //     "Turri"
+        //   ]
+        // }
+      
       
 
   return (
@@ -126,13 +63,13 @@ function Fabrics() {
             <div className={s.title}>Фабрики</div>
 
             <div className={s.alphabet}>
-              {
-                  fabricsList.map((elem) => {
+              {   fabricsList.length >= 1 &&
+                  fabricsList.map((elem, index) => {
                       return(
-                          <div className={s.block}>
+                          <div className={s.block} key={index}>
                               <p className={s.mainLetter}>{elem.mainLetter}</p>
                               {
-                                elem.links.map((link) => <div className={s.link}>{link}</div>)
+                                elem.links.map((link, index) => <div key={index} onClick={() => {navigate(`/fullItem/Фабрики/${elem.id}`)}} className={s.link}>{link}</div>)
                               }
                               
                           </div>
@@ -160,7 +97,7 @@ function Fabrics() {
                 <div className={s.title}>Ассортимент поражает</div>
                 <div className={s.par1}>В Grand Italia вы совершенно точно сможете найти подходящую коллекцию от топ фабрик производителей итальянской мебели, и вот почему:</div>
                 <div className={s.par2}>В каталоге представлены гарнитуры, выполненные во всех актуальных стилях. Есть комплекты от мастеров, специализирующихся на классике, задающих тренды модерна, понимающих толк в арт-деко, определяющих нюансы прованса и так далее.</div>
-                <div className={s.par3}>В разделе вас ждут коллекции, сделанные для самых разных комнат комфортабельного дома. Здесь фабрики итальянской мебели представляют свои спальни и прихожие, кухни и гостиные, стенки и мебель для ванной и у каждого товара есть своя изюминка.</div>
+                <div className={s.par3}>В разделе вас ждут коллекции, сделанные для самых разных комнат комфортабельного дома. Здесь фабрики итальянской мебели представляют свои спальни и прихожие, кухни и гостиные, <br/>стенки и мебель для ванной и у каждого товара есть своя изюминка.</div>
               </div>
             </div>
 
